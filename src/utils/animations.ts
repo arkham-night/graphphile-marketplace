@@ -1,57 +1,77 @@
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, RefObject } from 'react';
 
-// Hook to detect when an element is in viewport
-export function useInView(options = {}) {
+interface InViewOptions {
+  threshold?: number;
+  rootMargin?: string;
+  once?: boolean;
+}
+
+export function useInView(options: InViewOptions = {}): [RefObject<HTMLElement>, boolean] {
+  const { threshold = 0.1, rootMargin = '0px', once = false } = options;
+  const ref = useRef<HTMLElement>(null);
   const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-    
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsInView(entry.isIntersecting);
-    }, options);
-    
-    observer.observe(ref.current);
-    
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          if (once) {
+            observer.disconnect();
+          }
+        } else if (!once) {
+          setIsInView(false);
+        }
+      },
+      { threshold, rootMargin }
+    );
+
+    observer.observe(element);
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.disconnect();
     };
-  }, [options]);
+  }, [threshold, rootMargin, once]);
 
   return [ref, isInView];
 }
 
-// Hook for image loading with blur effect
 export function useImageLoad() {
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   const handleImageLoaded = () => {
     setIsLoaded(true);
   };
-  
-  return { isLoaded, handleImageLoaded, className: `transition-all duration-500 ${isLoaded ? 'image-loaded' : 'image-loading'}` };
+
+  const className = isLoaded ? 'image-loaded' : 'image-loading';
+
+  return { isLoaded, handleImageLoaded, className };
 }
 
-// Hook for staggered animations
-export function useStaggeredAnimation(count: number, baseDelay = 100) {
-  return Array.from({ length: count }, (_, i) => ({
-    style: { 
-      animationDelay: `${baseDelay * i}ms`,
-      opacity: 0,
-      transform: 'translateY(20px)'
-    },
-    className: 'animate-fade-in-up'
-  }));
-}
-
-// Smooth scroll function
 export function scrollToElement(elementId: string) {
   const element = document.getElementById(elementId);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
+}
+
+// Utility function to format Indian prices
+export function formatIndianPrice(price: number): string {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
+// Utility for smooth scroll to top
+export function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }

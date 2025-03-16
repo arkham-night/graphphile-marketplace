@@ -22,13 +22,13 @@ const FeaturedCollection: React.FC = () => {
         {/* Section Heading with accent color */}
         <div className="text-center mb-12">
           <div className="inline-block bg-yellow-400 px-4 py-1 rounded-full mb-3">
-            <span className="text-sm font-medium text-blue-900">Curated Collections</span>
+            <span className="text-sm font-medium text-blue-900">Exclusive Collections</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-blue-900">
-            Exclusive Graphic Designs
+            Artistic Expression Through T-Shirts
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our curated collections of graphic t-shirts, each with its unique aesthetic and story.
+            Discover our curated collections of graphic t-shirts, each telling a unique story through authentic Indian artistic expression.
           </p>
         </div>
         
@@ -51,7 +51,7 @@ const FeaturedCollection: React.FC = () => {
         <div className="mt-12 text-center">
           <Button 
             variant="outline"
-            className="group border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white"
+            className="group border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white"
             asChild
           >
             <Link to="/collections">
@@ -90,6 +90,14 @@ const CollectionCard: React.FC<CollectionCardProps> = ({
   const delay = index * 0.15;
   const evenCard = index % 2 === 0;
   
+  // Replace the collection images with more India-focused t-shirt collections
+  const indianCollectionImages = [
+    "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80", 
+    "https://images.unsplash.com/photo-1618354691438-25bc04584c23?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+  ];
+  
+  const collectionImage = indianCollectionImages[index % indianCollectionImages.length];
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -105,19 +113,19 @@ const CollectionCard: React.FC<CollectionCardProps> = ({
       {/* Collection Image with zoom effect */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <motion.img
-          src={collection.image}
+          src={collectionImage}
           alt={collection.name}
           className="w-full h-full object-cover"
           animate={isActive ? { scale: 1.05 } : { scale: 1 }}
           transition={{ duration: 0.5 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 via-blue-900/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/50 to-transparent" />
         
         {/* Yellow accent element */}
         <div className={cn(
           "absolute w-24 h-24 rounded-full bg-yellow-400 transition-all duration-500",
           evenCard ? "top-6 -right-12 group-hover:right-6" : "bottom-6 -left-12 group-hover:left-6",
-          "opacity-70"
+          "opacity-80"
         )} />
       </div>
       
@@ -131,7 +139,7 @@ const CollectionCard: React.FC<CollectionCardProps> = ({
         </p>
         <Link
           to={`/collections/${collection.id}`}
-          className="inline-flex items-center text-sm font-medium text-white bg-blue-700/40 hover:bg-blue-700/60 px-4 py-2 rounded-full backdrop-blur-sm transition-colors duration-300"
+          className="inline-flex items-center text-sm font-medium text-white bg-blue-700/70 hover:bg-blue-700/90 px-4 py-2 rounded-full backdrop-blur-sm transition-colors duration-300"
         >
           <span className="mr-2">Explore Collection</span>
           <span className="relative transition-all duration-300 group-hover:translate-x-1">
