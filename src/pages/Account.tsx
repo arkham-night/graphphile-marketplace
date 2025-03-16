@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { User, Package, MapPin, CreditCard, LogOut, CheckCircle, AlertCircle } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { cn } from '@/lib/utils';
 
 const AccountPage = () => {
   const { toast } = useToast();
@@ -52,7 +53,6 @@ const AccountPage = () => {
       toast({
         title: "Profile updated",
         description: "Your profile information has been saved.",
-        icon: <CheckCircle className="h-5 w-5 text-green-500" />
       });
     }, 1000);
   };
