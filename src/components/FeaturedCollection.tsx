@@ -32,7 +32,7 @@ const FeaturedCollection: React.FC = () => {
               key={collection.id}
               collection={collection}
               index={index}
-              isInView={isInView}
+              isInView={isInView as boolean}
             />
           ))}
         </div>

@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/lib/products';
+import { useImageLoad } from '@/utils/animations';
 import { motion } from 'framer-motion';
 import { 
   SlidersHorizontal, 
