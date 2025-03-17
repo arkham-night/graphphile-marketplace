@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Account from "./pages/Account";
@@ -12,6 +13,8 @@ import SignUp from "./pages/SignUp";
 import Admin from "./pages/Admin";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
+import Collections from "./pages/Collections";
+import About from "./pages/About";
 
 // Admin Panel Pages
 import AdminProducts from "./pages/admin/Products";
@@ -38,46 +41,50 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          
-          {/* Admin Routes */}
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/products" element={<AdminProducts />} />
-          <Route path="/admin/products/add" element={<AdminAddEditProduct />} />
-          <Route path="/admin/products/edit/:id" element={<AdminAddEditProduct />} />
-          <Route path="/admin/collections" element={<AdminCollections />} />
-          <Route path="/admin/categories" element={<AdminCategories />} />
-          <Route path="/admin/import-export" element={<AdminImportExport />} />
-          <Route path="/admin/reviews" element={<AdminReviews />} />
-          <Route path="/admin/orders" element={<AdminOrders />} />
-          <Route path="/admin/orders/:id" element={<AdminOrderDetail />} />
-          <Route path="/admin/returns" element={<AdminReturns />} />
-          <Route path="/admin/shipments" element={<AdminShipments />} />
-          <Route path="/admin/customers" element={<AdminCustomers />} />
-          <Route path="/admin/customers/:id" element={<AdminCustomerDetail />} />
-          <Route path="/admin/segments" element={<AdminSegments />} />
-          <Route path="/admin/communication" element={<AdminCommunication />} />
-          <Route path="/admin/homepage-builder" element={<AdminHomepageBuilder />} />
-          <Route path="/admin/banners" element={<AdminBanners />} />
-          <Route path="/admin/content-blocks" element={<AdminContentBlocks />} />
-          <Route path="/admin/blog" element={<AdminBlog />} />
-          <Route path="/admin/media" element={<AdminMedia />} />
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/collections" element={<Collections />} />
+            <Route path="/about" element={<About />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/products" element={<AdminProducts />} />
+            <Route path="/admin/products/add" element={<AdminAddEditProduct />} />
+            <Route path="/admin/products/edit/:id" element={<AdminAddEditProduct />} />
+            <Route path="/admin/collections" element={<AdminCollections />} />
+            <Route path="/admin/categories" element={<AdminCategories />} />
+            <Route path="/admin/import-export" element={<AdminImportExport />} />
+            <Route path="/admin/reviews" element={<AdminReviews />} />
+            <Route path="/admin/orders" element={<AdminOrders />} />
+            <Route path="/admin/orders/:id" element={<AdminOrderDetail />} />
+            <Route path="/admin/returns" element={<AdminReturns />} />
+            <Route path="/admin/shipments" element={<AdminShipments />} />
+            <Route path="/admin/customers" element={<AdminCustomers />} />
+            <Route path="/admin/customers/:id" element={<AdminCustomerDetail />} />
+            <Route path="/admin/segments" element={<AdminSegments />} />
+            <Route path="/admin/communication" element={<AdminCommunication />} />
+            <Route path="/admin/homepage-builder" element={<AdminHomepageBuilder />} />
+            <Route path="/admin/banners" element={<AdminBanners />} />
+            <Route path="/admin/content-blocks" element={<AdminContentBlocks />} />
+            <Route path="/admin/blog" element={<AdminBlog />} />
+            <Route path="/admin/media" element={<AdminMedia />} />
+            
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 
