@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
+import GoogleAuthButton from '@/components/GoogleAuthButton';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -236,20 +237,10 @@ const SignUp = () => {
                   )}
                   
                   {step === 1 && (
-                    <Button 
-                      type="button" 
-                      variant="outline" 
+                    <GoogleAuthButton 
+                      mode="signup"
                       className="w-full border-gray-300"
-                      onClick={() => {
-                        toast({
-                          title: "Google Sign-Up",
-                          description: "This would connect to Google OAuth (demo only).",
-                        });
-                      }}
-                    >
-                      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="h-5 w-5 mr-2" />
-                      Google
-                    </Button>
+                    />
                   )}
                 </form>
               </CardContent>

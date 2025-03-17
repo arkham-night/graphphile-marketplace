@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
+import GoogleAuthButton from '@/components/GoogleAuthButton';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const SignIn = () => {
           title: "Admin Login Successful",
           description: "Welcome to the admin dashboard.",
         });
-        // Redirect to admin dashboard (to be created)
+        // Redirect to admin dashboard
         navigate('/admin');
         return;
       }
@@ -178,20 +179,10 @@ const SignIn = () => {
                   )}
                   
                   {!isAdmin && (
-                    <Button 
-                      type="button" 
-                      variant="outline" 
+                    <GoogleAuthButton 
+                      mode="signin"
                       className="w-full border-gray-300"
-                      onClick={() => {
-                        toast({
-                          title: "Google Sign-In",
-                          description: "This would connect to Google OAuth (demo only).",
-                        });
-                      }}
-                    >
-                      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="h-5 w-5 mr-2" />
-                      Google
-                    </Button>
+                    />
                   )}
                 </form>
               </CardContent>

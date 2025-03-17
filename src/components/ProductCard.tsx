@@ -33,6 +33,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
     setCurrentImageIndex(0);
   };
 
+  const handleQuickView = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Navigate programmatically if needed
+    window.location.href = `/product/${product.id}`;
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Add to cart logic here
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -63,14 +76,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
             isHovered ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           )}
         >
-          <Link 
-            to={`/product/${product.id}`}
+          <button 
+            onClick={handleQuickView}
             className="bg-white/90 backdrop-blur-sm text-primary p-3 rounded-full hover:bg-white transition-colors duration-200 shadow-lg"
             aria-label="Quick view"
           >
             <Eye className="w-5 h-5" />
-          </Link>
+          </button>
           <button 
+            onClick={handleAddToCart}
             className="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-colors duration-200 shadow-lg"
             aria-label="Add to cart"
           >
