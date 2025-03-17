@@ -1,18 +1,16 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { ShoppingBag, User, Search, Menu, X, LogIn, LogOut } from 'lucide-react';
+import { ShoppingBag, User, Search, Menu, X, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/contexts/AuthContext';
-import { useToast } from '@/components/ui/use-toast';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // This would come from your auth context in a real app
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
-  const { toast } = useToast();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -32,22 +30,10 @@ const Navbar = () => {
     navigate('/signin');
   };
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      toast({
-        title: "Logged out successfully",
-        description: "You have been signed out of your account.",
-      });
-      navigate('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-      toast({
-        title: "Error",
-        description: "There was a problem signing out. Please try again.",
-        variant: "destructive",
-      });
-    }
+  const handleSignOut = () => {
+    // In a real app, you would call your auth service logout method
+    setIsLoggedIn(false);
+    navigate('/');
   };
 
   return (
@@ -123,7 +109,7 @@ const Navbar = () => {
               <Search className="w-5 h-5" />
             </button>
             
-            {user ? (
+            {isLoggedIn ? (
               <Link 
                 to="/account" 
                 className={cn(
@@ -224,7 +210,7 @@ const Navbar = () => {
             <MobileNavLink to="/collections" isActive={location.pathname === '/collections'}>Collections</MobileNavLink>
             <MobileNavLink to="/about" isActive={location.pathname === '/about'}>About</MobileNavLink>
             
-            {!user && (
+            {!isLoggedIn && (
               <>
                 <MobileNavLink to="/signin" isActive={location.pathname === '/signin'}>Sign In</MobileNavLink>
                 <MobileNavLink to="/signup" isActive={location.pathname === '/signup'}>Create Account</MobileNavLink>
@@ -242,7 +228,7 @@ const Navbar = () => {
               <Search className="w-5 h-5" />
             </Link>
             
-            {user ? (
+            {isLoggedIn ? (
               <Link 
                 to="/account" 
                 className="p-3 rounded-full bg-blue-50 text-blue-900"

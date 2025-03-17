@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '@/lib/supabase';
 
 interface GoogleAuthButtonProps {
   mode: 'signin' | 'signup';
@@ -19,24 +18,27 @@ const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({ mode, className }) 
     setIsLoading(true);
     
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/account`
-        }
-      });
-
-      if (error) throw error;
-
-      // No need for toast here as we're redirecting to Google
+      // In a real implementation, this would connect to Google OAuth
+      // For now, we'll simulate the authentication process
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
+      // Simulate successful authentication
+      const actionText = mode === 'signin' ? 'Sign In' : 'Sign Up';
+      
+      toast({
+        title: `Google ${actionText} Successful`,
+        description: "Welcome to Graphphile!",
+      });
+      
+      // Redirect based on the mode
+      navigate('/account');
     } catch (error) {
-      console.error('Google auth error:', error);
       toast({
         title: "Authentication Failed",
         description: "There was an error authenticating with Google. Please try again.",
         variant: "destructive",
       });
+    } finally {
       setIsLoading(false);
     }
   };

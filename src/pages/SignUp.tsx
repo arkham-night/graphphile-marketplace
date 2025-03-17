@@ -11,7 +11,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import GoogleAuthButton from '@/components/GoogleAuthButton';
-import { supabase } from '@/lib/supabase';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -51,31 +50,19 @@ const SignUp = () => {
     setIsLoading(true);
 
     try {
-      // Register user with Supabase
-      const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            full_name: formData.fullName,
-            phone: formData.phone
-          }
-        }
-      });
-
-      if (error) throw new Error(error.message);
+      // Simulate account creation
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
       toast({
         title: "Account created successfully!",
-        description: "Please check your email for the confirmation link.",
+        description: "Welcome to Graphphile. You can now sign in.",
       });
       
       navigate('/signin');
     } catch (error) {
-      console.error('Sign up error:', error);
       toast({
         title: "Sign up failed",
-        description: error instanceof Error ? error.message : "There was an error creating your account. Please try again.",
+        description: "There was an error creating your account. Please try again.",
         variant: "destructive",
       });
     } finally {

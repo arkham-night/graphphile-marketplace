@@ -11,7 +11,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import GoogleAuthButton from '@/components/GoogleAuthButton';
-import { supabase } from '@/lib/supabase';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -33,7 +32,10 @@ const SignIn = () => {
     setIsLoading(true);
 
     try {
-      // For admin mode, use hardcoded credentials
+      // Simulate authentication
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // For demo, if admin mode and using admin credentials
       if (isAdmin && formData.email === 'admin' && formData.password === '12345678') {
         toast({
           title: "Admin Login Successful",
@@ -44,26 +46,16 @@ const SignIn = () => {
         return;
       }
 
-      // For regular users, use Supabase authentication
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (error) {
-        throw new Error(error.message);
-      }
-
+      // For demo, assume login is successful
       toast({
         title: "Login Successful",
         description: "Welcome back to Graphphile!",
       });
       navigate('/account');
     } catch (error) {
-      console.error('Login error:', error);
       toast({
         title: "Login Failed",
-        description: error instanceof Error ? error.message : "Please check your credentials and try again.",
+        description: "Please check your credentials and try again.",
         variant: "destructive",
       });
     } finally {
