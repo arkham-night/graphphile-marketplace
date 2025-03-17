@@ -17,7 +17,7 @@ export const products: Product[] = [
     id: "1",
     name: "Geometric Harmony",
     description: "A meticulously designed t-shirt featuring balanced geometric patterns inspired by mathematical precision and natural harmony.",
-    price: 34.99,
+    price: 1499,
     images: [
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1503341504253-dff4815485f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -36,7 +36,7 @@ export const products: Product[] = [
     id: "2",
     name: "Abstract Waves",
     description: "Fluid lines and subtle color gradients create a sense of movement and depth in this artistic design.",
-    price: 39.99,
+    price: 1699,
     images: [
       "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -55,7 +55,7 @@ export const products: Product[] = [
     id: "3",
     name: "Minimalist Line Art",
     description: "Simple yet profound, this design uses a single continuous line to create a striking visual statement.",
-    price: 29.99,
+    price: 1299,
     images: [
       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -73,7 +73,7 @@ export const products: Product[] = [
     id: "4",
     name: "Architectural Elements",
     description: "A tribute to modernist architecture, featuring clean lines and structural elements in perfect balance.",
-    price: 44.99,
+    price: 1899,
     images: [
       "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1512400930990-e0bc0bd669b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -92,7 +92,7 @@ export const products: Product[] = [
     id: "5",
     name: "Typographic Rhythm",
     description: "Letters and words arranged to create visual patterns and rhythms, celebrating the beauty of typography.",
-    price: 34.99,
+    price: 1499,
     images: [
       "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1593183534075-3516ec1e38ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -111,7 +111,7 @@ export const products: Product[] = [
     id: "6",
     name: "Optical Illusion",
     description: "Mind-bending patterns that play with perception and create fascinating visual effects.",
-    price: 42.99,
+    price: 1799,
     images: [
       "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1503342331862-c0d3e1a08419?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",

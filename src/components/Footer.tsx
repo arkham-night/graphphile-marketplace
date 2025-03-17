@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tighter">graphphile</h2>
             <p className="text-muted-foreground">
-              Artistic expression through wearable graphic design, crafted with precision and passion.
+              Artistic expression through wearable graphic design, crafted with precision and passion in India.
             </p>
             <div className="flex space-x-4 text-muted-foreground">
               <a href="#" className="hover:text-primary transition-colors duration-200" aria-label="Instagram">
@@ -59,11 +59,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-start">
                 <Phone className="w-5 h-5 mr-3 shrink-0 mt-0.5" />
-                <span>+1 (800) 123-4567</span>
+                <span>+91 98765 43210</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 shrink-0 mt-0.5" />
-                <span>123 Design Street, Creative City, 10001</span>
+                <span>123 Fashion Street, Mumbai, Maharashtra 400001</span>
               </li>
             </ul>
           </div>

@@ -13,7 +13,7 @@ const AdminDashboard: React.FC = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
-  const totalSales = 127850;
+  const totalSales = 892750; // Updated to a more realistic value in Indian Rupees
   const totalOrders = 32;
   const totalCustomers = 18;
   const pendingOrders = 5;
@@ -23,7 +23,7 @@ const AdminDashboard: React.FC = () => {
     
     // Simulate API call
     setTimeout(() => {
-      setIsLoading(false);
+      setIsLoaded(true);
       toast({
         title: "Dashboard Refreshed",
         description: "Latest data has been loaded",
@@ -31,11 +31,13 @@ const AdminDashboard: React.FC = () => {
     }, 1500);
   };
 
-  // Convert the products to a format suitable for the admin panel
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Convert the products to a format suitable for the admin panel with Indian price format
   const productsList = products.map(product => ({
     id: product.id,
     name: product.name,
-    price: product.price,
+    price: product.price * 83, // Convert USD to INR (approximate exchange rate)
     stock: Math.floor(Math.random() * 50) + 1, // Random stock for demo
     category: product.category,
     featured: product.featured

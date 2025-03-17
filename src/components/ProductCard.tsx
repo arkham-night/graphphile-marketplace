@@ -6,6 +6,7 @@ import { useImageLoad } from '@/utils/animations';
 import { Eye, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Product } from '@/lib/products';
+import { formatIndianPrice } from '@/utils/animations';
 
 interface ProductCardProps {
   product: Product;
@@ -95,7 +96,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
         </Link>
         
         <div className="mt-1 flex items-center justify-between">
-          <p className="text-lg font-semibold">${product.price.toFixed(2)}</p>
+          <p className="text-lg font-semibold">{formatIndianPrice(product.price)}</p>
           
           {/* Color options */}
           <div className="flex gap-1">
