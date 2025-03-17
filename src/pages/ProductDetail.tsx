@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { products } from '@/lib/products';
 import { formatIndianPrice } from '@/utils/animations';
-import { Star, Truck, ShieldCheck, ArrowLeft, ShoppingBag, Heart, Share2 } from 'lucide-react';
+import { Star, Truck, ShieldCheck, ArrowLeft, ShoppingBag, Heart, Share2, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ProductDetail = () => {
