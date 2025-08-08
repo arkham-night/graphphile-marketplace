@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ShoppingBag, Trophy, Star, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import Seo from '@/components/Seo';
 
 const Index = () => {
   const featuredProducts = getFeaturedProducts();
@@ -20,6 +21,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo title="Graphphile – Premium Graphic Tees" description="Premium Indian graphic t-shirts crafted with quality cotton. Shop bestselling designs." image="/og-image.png" />
       <Navbar />
       
       <Hero 
@@ -114,8 +116,9 @@ const Index = () => {
               <div className="aspect-[4/5] rounded-tr-[4rem] rounded-bl-[2rem] overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1547637589-f54c34f5d7a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                  alt="T-shirt design process" 
+                  alt="T-shirt design process at Graphphile" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-400 rounded-full" />

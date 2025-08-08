@@ -17,6 +17,7 @@ import {
   List
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Seo from '@/components/Seo';
 
 const ProductsPage = () => {
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -121,6 +122,7 @@ const ProductsPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo title="Shop Graphic Tees | Graphphile" description="Browse all graphic t-shirts by Graphphile. Filter by category, color, and size." />
       <Navbar />
       
       <main className="pt-24 pb-16 px-4 md:px-6 lg:px-8">

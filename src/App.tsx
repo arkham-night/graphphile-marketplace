@@ -13,6 +13,15 @@ import Admin from "./pages/Admin";
 import Products from "./pages/Products";
 import Collections from "./pages/Collections";
 import About from "./pages/About";
+import Designers from "./pages/Designers";
+import Sustainability from "./pages/Sustainability";
+import Careers from "./pages/Careers";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Shipping from "./pages/Shipping";
+import Search from "./pages/Search";
+import Cart from "./pages/Cart";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +36,15 @@ const App = () => (
           <Route path="/products" element={<Products />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/about" element={<About />} />
+          <Route path="/designers" element={<Designers />} />
+          <Route path="/sustainability" element={<Sustainability />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/account" element={<Account />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />

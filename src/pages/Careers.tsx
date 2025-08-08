@@ -3,16 +3,16 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Seo from '@/components/Seo';
 
-const About: React.FC = () => {
+const Careers: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Seo title="About Graphphile" description="We celebrate India’s artistic heritage through wearable design. Crafted with premium cotton." />
+      <Seo title="Careers | Graphphile" description="Join the Graphphile team and help create wearable art." />
       <Navbar />
       <main className="pt-24 pb-16 px-4 md:px-6 lg:px-8">
         <div className="container mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">About Graphphile</h1>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Careers</h1>
           <p className="text-muted-foreground max-w-2xl">
-            We celebrate India’s artistic heritage through wearable design. Crafted with premium cotton and attention to detail.
+            We’re always looking for passionate creatives and builders. Check back for open roles.
           </p>
         </div>
       </main>
@@ -21,4 +21,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default Careers;
