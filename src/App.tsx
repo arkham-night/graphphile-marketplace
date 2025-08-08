@@ -10,6 +10,9 @@ import Account from "./pages/Account";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Admin from "./pages/Admin";
+import Products from "./pages/Products";
+import Collections from "./pages/Collections";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +24,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/about" element={<About />} />
           <Route path="/account" element={<Account />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
