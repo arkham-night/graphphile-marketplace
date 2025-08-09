@@ -21,17 +21,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Seo title="Graphphile – Premium Graphic Tees" description="Premium Indian graphic t-shirts crafted with quality cotton. Shop bestselling designs." image="/og-image.png" />
+      <Seo title="Graphphile – Premium Graphic Tees" description="An immersive visual experience by Graphphile." image="/og-image.png" />
       <Navbar />
       
       <Hero 
         title="Premium Indian Graphic Tees"
         subtitle="Artistic t-shirts that tell your story, crafted with love in India."
-        bgImage="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+        bgImage="https://images.unsplash.com/photo-1520975916090-3105956dac38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
       />
       
       {/* USP Banner */}
-      <section className="py-8 bg-blue-900 text-white">
+      <section className="py-10 bg-blue-900 text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="flex items-center justify-center md:justify-start gap-3 py-3">
@@ -65,7 +65,7 @@ const Index = () => {
       <FeaturedCollection />
       
       {/* Featured Products */}
-      <section className="py-20 px-4 md:px-6 lg:px-8">
+      <section className="py-24 px-4 md:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="flex justify-between items-end mb-12">
             <div>
