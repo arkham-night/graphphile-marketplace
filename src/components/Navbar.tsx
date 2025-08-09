@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { ShoppingBag, User, Search, Menu, X, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/hooks/useCart';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,6 +12,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // This would come from your auth context in a real app
   const location = useLocation();
   const navigate = useNavigate();
+  const { totalItems } = useCart();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -151,7 +153,7 @@ const Navbar = () => {
             >
               <ShoppingBag className="w-5 h-5" />
               <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-yellow-400 text-blue-900 text-xs flex items-center justify-center font-medium">
-                0
+                {totalItems}
               </span>
             </Link>
           </div>
@@ -256,7 +258,7 @@ const Navbar = () => {
             >
               <ShoppingBag className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-yellow-400 text-blue-900 text-xs flex items-center justify-center font-medium">
-                0
+                {totalItems}
               </span>
             </Link>
           </div>

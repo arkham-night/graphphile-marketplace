@@ -1,12 +1,14 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useImageLoad } from '@/utils/animations';
 import { Eye, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Product } from '@/lib/products';
 import { formatIndianPrice } from '@/utils/animations';
+import { useCart } from '@/hooks/useCart';
+import { toast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +16,8 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
+  const navigate = useNavigate();
+  const { addItem } = useCart();
   const [isHovered, setIsHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { isLoaded, handleImageLoaded, className: imageClassName } = useImageLoad();
@@ -36,14 +40,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0 }) => {
   const handleQuickView = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    // Navigate programmatically if needed
-    window.location.href = `/product/${product.id}`;
+    navigate(`/product/${product.id}`);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    // Add to cart logic here
+    addItem(product, { size: product.sizes?.[0], color: product.colors?.[0]?.name, quantity: 1 });
+    toast({ title: 'Added to cart', description: `${product.name} added to your cart.` });
   };
 
   return (

@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
-import { products } from '@/lib/products';
+import { products, type Product } from '@/lib/products';
 import { useImageLoad } from '@/utils/animations';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useCart } from '@/hooks/useCart';
+import { toast } from '@/hooks/use-toast';
 import { 
   SlidersHorizontal, 
   Check, 
@@ -120,6 +123,7 @@ const ProductsPage = () => {
     setSortOption(e.target.value);
   };
 
+  const { addItem } = useCart();
   return (
     <div className="min-h-screen bg-background">
       <Seo title="Shop Graphic Tees | Graphphile" description="Browse all graphic t-shirts by Graphphile. Filter by category, color, and size." />
@@ -494,23 +498,14 @@ const ProductsPage = () => {
 
 // List view for products
 interface ListProductCardProps {
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    images: string[];
-    category: string;
-    colors: { name: string; hex: string }[];
-    sizes: string[];
-    featured: boolean;
-  };
+  product: Product;
   index: number;
 }
 
 const ListProductCard: React.FC<ListProductCardProps> = ({ product, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { isLoaded, handleImageLoaded, className: imageClassName } = useImageLoad();
+  const { addItem } = useCart();
   
   return (
     <motion.div
@@ -541,12 +536,12 @@ const ListProductCard: React.FC<ListProductCardProps> = ({ product, index }) => 
         <div>
           <span className="text-sm text-muted-foreground">{product.category}</span>
           <h3 className="font-medium text-lg mb-2">
-            <a 
-              href={`/product/${product.id}`}
+            <Link 
+              to={`/product/${product.id}`}
               className="hover:text-primary transition-colors duration-200"
             >
               {product.name}
-            </a>
+            </Link>
           </h3>
           <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
             {product.description}
@@ -571,13 +566,14 @@ const ListProductCard: React.FC<ListProductCardProps> = ({ product, index }) => 
           </div>
           
           <div className="flex gap-2">
-            <a 
-              href={`/product/${product.id}`}
+            <Link 
+              to={`/product/${product.id}`}
               className="px-4 py-2 bg-secondary hover:bg-secondary/80 rounded-md text-sm font-medium transition-colors"
             >
               View Details
-            </a>
+            </Link>
             <button 
+              onClick={() => addItem(product, { size: product.sizes?.[0], color: product.colors?.[0]?.name, quantity: 1 })}
               className="px-4 py-2 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Add to Cart
